@@ -12,10 +12,18 @@ namespace CodilitySolutions . CyclicRotation {
             this . ror=ror;
             this . R=R;
         }
+
+        public bool testRes(int [] res) {
+            CollectionAssert . AreEqual (res , R );
+            return true;    
+        }
+
     }
 
     [TestClass]
-    public class CyclicRotationTest {
+    public class        CyclicRotationTest 
+        :               TestBase                                    {
+
         [TestMethod]
         public void TestCyclicRotation ( ) {
             Solution sol= new Solution();
@@ -27,20 +35,9 @@ namespace CodilitySolutions . CyclicRotation {
                             ,   new TestValues (new int[]{ 3 , 8 , 9 , 7 , 6 } , 2 ,new int[]{ 7, 6, 3, 8, 9})
                             };
 
-            int numTests = testValues.Length;
 
-            Assert . AreEqual ( 2 , numTests );
+             doTests(sol,testValues);
 
-            for (int n=0 ; n< numTests ; n++ ) {
-                TestValues v=testValues[n];
-                int [] R= sol.solution(v.A,v.ror);
-                try {
-                    CollectionAssert . AreEqual ( v . R , R );
-                }
-                catch (Exception e ) {
-                    throw new AssertFailedException ( "failed test: "+(n+1)+" :: "+e .Message );
-                }
-            }
         }
     }
 }

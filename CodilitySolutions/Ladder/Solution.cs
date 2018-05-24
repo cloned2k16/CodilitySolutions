@@ -6,7 +6,7 @@ namespace CodilitySolutions . Ladder {
         private static int    []  fib     = new int   [32768];
         private static int    []  empty   = new int   [] {};
 
-        static Solution ( ) {                                                                            // static constructor builds a Fibonacci cache
+        static Solution ( ) {                                                                           // static constructor builds a Fibonacci cache
             fib [ 0 ]=0;
             fib [ 1 ]=1;
             for ( int i = 2 ; i<fib . Length ; i++ ) {
