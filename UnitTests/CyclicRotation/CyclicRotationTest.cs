@@ -2,8 +2,10 @@
 using Microsoft . VisualStudio . TestTools . UnitTesting;
 
 
-namespace CodilitySolutions . CyclicRotation {
-    class TestValues {
+namespace CodilitySolutions 
+        . CyclicRotation                                            {
+//  ----------------------- --------------------------------------- ----------------------------------------------------
+    class                   TestValues {
         public int []  A,R;
         public int     ror;
 
@@ -13,16 +15,16 @@ namespace CodilitySolutions . CyclicRotation {
             this . R=R;
         }
 
-        public bool testRes(int [] res) {
+        public bool TestRes(int [] res) {
             CollectionAssert . AreEqual (res , R );
             return true;    
         }
 
     }
-
+//  ----------------------- --------------------------------------- ----------------------------------------------------
     [TestClass]
-    public class        CyclicRotationTest 
-        :               TestBase                                    {
+    public class            CyclicRotationTest 
+        :                   TestBase                                {
 
         [TestMethod]
         public void TestCyclicRotation ( ) {

@@ -3,8 +3,10 @@ using System;
 using System . Diagnostics;
 using Microsoft . VisualStudio . TestTools . UnitTesting;
 
-namespace CodilitySolutions . Ladder {
-    public class TestValues {
+namespace CodilitySolutions 
+        . Ladder                                                    {
+//  ----------------------- --------------------------------------- ----------------------------------------------------
+    public class            TestValues                              {
         public int []  A,B,R;
 
         public TestValues ( int [ ] A , int [] B , int [ ] R ) {
@@ -13,15 +15,15 @@ namespace CodilitySolutions . Ladder {
             this . R=R;
         }
 
-        public bool testRes(int [] res) {
+        public bool TestRes(int [] res) {
             CollectionAssert . AreEqual (res , R );
             return true;    
         }
     }
-
+//  ----------------------- --------------------------------------- ----------------------------------------------------
     [TestClass]
-    public class        LadderTest
-        :               TestBase                                    {
+    public class            LadderTest
+        :                   TestBase                                {
 
         [TestMethod]
         public void TestLadder ( ) {

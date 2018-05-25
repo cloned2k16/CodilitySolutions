@@ -5,7 +5,7 @@ using Microsoft . VisualStudio . TestTools . UnitTesting;
 
 namespace CodilitySolutions {
     [TestClass]
-    public abstract class TestBase {
+    public abstract class               TestBase {
         protected int                   numTests;
 
         #region Properties
@@ -44,7 +44,7 @@ namespace CodilitySolutions {
             Trace("test class:  {0}",testClass);
             Trace("test fields: {0}",string.Join(",",(object[])testFields));
              
-            try {
+            //try {
 
               for ( int n = 0 ; n< numTests ; n++ ) {
                 object tVal=testValues[n];
@@ -78,17 +78,18 @@ namespace CodilitySolutions {
                                                         ,   solution
                                                         ,   args);
                     
-                ok = (bool)testClass.InvokeMember("testRes"
+                ok = (bool)testClass.InvokeMember("TestRes"
                                                     ,   BindingFlags.DeclaredOnly
                                                     |   BindingFlags.Public
+                                                    |   BindingFlags.NonPublic 
                                                     |   BindingFlags.Instance
                                                     |   BindingFlags.InvokeMethod
                                                     ,   null
                                                     ,   tVal
                                                     ,   new object[] { R });
               }
-            }
-            catch (Exception e) { Trace("exception {0}",e); }
+            //}
+            //catch (Exception e) { Trace("exception {0}",e); }
 
             return ok;
         }

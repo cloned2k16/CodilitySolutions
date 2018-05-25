@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryGap\BinaryGapTest.cs" />
+    <Compile Include="TestValueBase.cs" />
     <Compile Include="CyclicRotation\CyclicRotationTest.cs" />
     <Compile Include="Ladder\LadderTest.cs" />
     <Compile Include="MainTest.cs" />

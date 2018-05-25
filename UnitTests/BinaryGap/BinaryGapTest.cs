@@ -6,11 +6,34 @@ using System . Diagnostics;
 using CodilitySolutions;
 
 
-namespace CodilitySolutions.BinaryGap {
+namespace CodilitySolutions
+        . BinaryGap                                                 {
+//  ----------------------- --------------------------------------- ----------------------------------------------------
+    class                   TestValues                              
+        :                   TestValuesBase                          {
+        public int A,R;
 
+        public              TestValues                              ( int a ,int r ) {
+            A=a;
+            R=r;
+        }
+
+        protected override 
+        bool                TestRes                                 (params object [] args) {
+            try {
+                int res= (int) args[0];
+                Assert . AreEqual (res , R );
+                return true;    
+            }
+            catch (Exception e){ Console.Error.WriteLine("Exception: {0}",e); }
+            return false;
+        }
+
+    }
+//  ----------------------- --------------------------------------- ----------------------------------------------------
     [TestClass]
-    public class                        BinaryGapTest 
-        :                               TestBase                    {
+    public class            BinaryGapTest 
+        :                   TestBase                                {
 
         [TestMethod]
         public void TestBinaryGap ( ) {
@@ -18,33 +41,20 @@ namespace CodilitySolutions.BinaryGap {
 
             Assert . AreNotEqual ( null , sol );
 
-            int [,] testPairs = {   { 0x1041        , 5 }
-                                ,   { 0x5555A5      , 2 }
-                                ,   { 0b101000000   , 1 }
-                                ,   { 0b1001000000  , 2 }
-                                ,   { 0b1000100000  , 3 }
-                                ,   { 0b1000100001  , 4 }
-                                ,   { 0b1001000001  , 5 }
-                                ,   { 0b1010000001  , 6 }
-                                };
+            TestValuesBase [] testValues ={ new TestValues( 0x1041        , 5 )
+                                        ,   new TestValues( 0x5555A5      , 2 )
+                                        ,   new TestValues( 0b101000000   , 1 )
+                                        ,   new TestValues( 0b1001000000  , 2 )
+                                        ,   new TestValues( 0b1000100000  , 3 )
+                                        ,   new TestValues( 0b1000100001  , 4 )
+                                        ,   new TestValues( 0b1001000001  , 5 )
+                                        ,   new TestValues( 0b1010000001  , 6 )
+                                        };
 
-            int numTests = testPairs.Length / 2;
+            doTests(sol,testValues);
 
-            Assert . AreEqual ( 8 , numTests );
-
-            for ( uint n = 0 ; n< numTests ; n++ ) {
-                int  N=testPairs[n,0]
-                ,    R=testPairs[n,1]
-                ;
-                try {
-
-                    Assert . AreEqual ( R , sol . solution ( N ) );
-                }
-                catch ( Exception e ) {
-                    throw new AssertFailedException ( "failed test: "+( n+1 )+" :: "+e . Message );
-                }
-            }
-
+            // -----------------------------------------------------------------
+            //  benchmark ...
             Stopwatch sw= new Stopwatch();
 
             sw . Start ( );
